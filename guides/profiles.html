@@ -3,34 +3,33 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Documentation</title>
-        <meta name="robots" content="noindex" />
+        <title>Profiles - Documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -76,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Tutorials</li><li class="chapter-item expanded affix "><li class="part-title">How-To Guides</li><li class="chapter-item expanded "><a href="guides/profiles.html"><strong aria-hidden="true">1.</strong> Profiles</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Tutorials</li><li class="chapter-item expanded affix "><li class="part-title">How-To Guides</li><li class="chapter-item expanded "><a href="../guides/profiles.html" class="active"><strong aria-hidden="true">1.</strong> Profiles</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -108,7 +107,7 @@
                     <h1 class="menu-title">Documentation</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                     </div>
@@ -135,76 +134,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="vastops-templates"><a class="header" href="#vastops-templates">VastOps Templates</a></h1>
-<p>This repo assists Vast’s users in deploying infrastructure through the Ops method, see the <a href="https://github.com/GTrunSec/threatbus2nix/pull/16">issue</a> get more information.</p>
-<blockquote>
-<p>Only the operator host required nix, and make sure you have enabled the ssh service on your deploy target host. The target host doesn’t need to install any dependencies.</p>
-</blockquote>
-<h1 id="required-files"><a class="header" href="#required-files">Required files</a></h1>
-<ul>
-<li>exmaple: <code>./profiles/test</code></li>
-</ul>
-<table><thead><tr><th>files</th><th></th></tr></thead><tbody>
-<tr><td>config.toml</td><td>hosts’s information</td></tr>
-<tr><td>deploy-nodes.env</td><td>env variables for deploying process</td></tr>
-<tr><td>flake.lock</td><td>No need modify, just for locking the files</td></tr>
-</tbody></table>
-<h2 id="create-your-custom-profile-for-deploying"><a class="header" href="#create-your-custom-profile-for-deploying">Create your custom profile for deploying.</a></h2>
-<ol>
-<li>
-<p>fork the <code>tempalte</code> repo and <code>mkdir -p ./profiles/&lt;name&gt;</code></p>
-</li>
-<li>
-<p>cp the required files to your specific profile directory, and modify those files to your expectation.</p>
-</li>
-<li>
-<p>add thoes files to git staged</p>
-</li>
-</ol>
-<h2 id="env-variables"><a class="header" href="#env-variables">Env variables</a></h2>
-<h3 id="deployment"><a class="header" href="#deployment">Deployment</a></h3>
-<pre><code class="language-sh"># can be  [ &quot;vast-bin&quot; &quot;vast-release&quot; &quot;vast-latest&quot;]
-VERSION=vast-bin
-
-HOST1=root@192.168.122.126
-SSH_OPT1=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
-
-HOST2=root@192.168.122.212
-SSH_OPT2=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
-</code></pre>
-<h1 id="command-actions"><a class="header" href="#command-actions">Command Actions</a></h1>
-<ul>
-<li>example to <code>profiles/test</code> </li>
-</ul>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./profiles/test -- --env-file=./profiles/test/deploy-nodes.env -t env
-
-</code></pre>
-<ul>
-<li>user interface:</li>
-</ul>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./&lt;profiles-dir&gt; -- --env-file=&lt;profiles-dir&gt;/&lt;env-file&gt; -t &lt;task-name&gt;
-
-</code></pre>
-<ul>
-<li>display documentation for the current command/action</li>
-</ul>
-<div align="center">
-  <img src="https://github.com/gtrunsec/vastOps-template/raw/main/attach/show-doc-command.png" width="550" />
-</div>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./&lt;profiles-dir&gt; -- doc
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="profiles"><a class="header" href="#profiles">Profiles</a></h1>
+                        <h1 id="profiles"><a class="header" href="#profiles">Profiles</a></h1>
 <pre><svg viewBox="0 0 400.046875 437.2140808105469" height="437.2140808105469" aria-labelledby="chart-title-mermaid-1656135723527 chart-desc-mermaid-1656135723527" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="400.046875" id="mermaid-1656135723527"><title id="chart-title-mermaid-1656135723527"/><desc id="chart-desc-mermaid-1656135723527"/><style>#mermaid-1656135723527 {font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-1656135723527 .error-icon{fill:#552222;}#mermaid-1656135723527 .error-text{fill:#552222;stroke:#552222;}#mermaid-1656135723527 .edge-thickness-normal{stroke-width:2px;}#mermaid-1656135723527 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1656135723527 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1656135723527 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1656135723527 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1656135723527 .marker{fill:#333333;stroke:#333333;}#mermaid-1656135723527 .marker.cross{stroke:#333333;}#mermaid-1656135723527 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1656135723527 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-1656135723527 .cluster-label text{fill:#333;}#mermaid-1656135723527 .cluster-label span{color:#333;}#mermaid-1656135723527 .label text,#mermaid-1656135723527 span{fill:#333;color:#333;}#mermaid-1656135723527 .node rect,#mermaid-1656135723527 .node circle,#mermaid-1656135723527 .node ellipse,#mermaid-1656135723527 .node polygon,#mermaid-1656135723527 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-1656135723527 .node .label{text-align:center;}#mermaid-1656135723527 .node.clickable{cursor:pointer;}#mermaid-1656135723527 .arrowheadPath{fill:#333333;}#mermaid-1656135723527 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-1656135723527 .flowchart-link{stroke:#333333;fill:none;}#mermaid-1656135723527 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid-1656135723527 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid-1656135723527 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-1656135723527 .cluster text{fill:#333;}#mermaid-1656135723527 .cluster span{color:#333;}#mermaid-1656135723527 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-1656135723527 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><g class="output"><g class="clusters"/><g class="edgePaths"><g style="opacity: 1;" id="L-A-B" class="edgePath LS-A LE-B"><path style="fill:none" marker-end="url(#arrowhead20)" d="M208.0234375,52L208.0234375,58.166666666666664C208.0234375,64.33333333333333,208.0234375,76.66666666666667,208.0234375,89C208.0234375,101.33333333333333,208.0234375,113.66666666666667,208.0234375,119.83333333333333L208.0234375,126" class="path"/><defs><marker orient="auto" markerHeight="6" markerWidth="8" markerUnits="strokeWidth" refY="5" refX="9" viewBox="0 0 10 10" id="arrowhead20"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs></g><g style="opacity: 1;" id="L-B-C" class="edgePath LS-B LE-C"><path style="fill:none" marker-end="url(#arrowhead21)" d="M208.0234375,170L208.0234375,174.16666666666666C208.0234375,178.33333333333334,208.0234375,186.66666666666666,208.10677083333334,195.08333358764648C208.19010416666666,203.5000005086263,208.35677083333334,212.00000101725263,208.44010416666666,216.25000127156576L208.5234375,220.50000152587893" class="path"/><defs><marker orient="auto" markerHeight="6" markerWidth="8" markerUnits="strokeWidth" refY="5" refX="9" viewBox="0 0 10 10" id="arrowhead21"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs></g><g style="opacity: 1;" id="L-C-D" class="edgePath LS-C LE-D"><path style="fill:none" marker-end="url(#arrowhead22)" d="M171.73125445832972,298.92188098420866L153.44401413194143,309.13724507880016C135.15677380555314,319.3526091733917,98.58229315277657,339.78333736257474,80.29505282638829,354.16536812383293C62.0078125,368.5473988850911,62.0078125,376.8807322184245,62.0078125,381.0473988850911L62.0078125,385.2140655517578" class="path"/><defs><marker orient="auto" markerHeight="6" markerWidth="8" markerUnits="strokeWidth" refY="5" refX="9" viewBox="0 0 10 10" id="arrowhead22"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs></g><g style="opacity: 1;" id="L-C-E" class="edgePath LS-C LE-E"><path style="fill:none" marker-end="url(#arrowhead23)" d="M208.5234375,335.7140609741211L208.44010416666666,339.79739507039386C208.35677083333334,343.8807291666667,208.19010416666666,352.04739735921225,208.10677083333334,360.29739812215166C208.0234375,368.5473988850911,208.0234375,376.8807322184245,208.0234375,381.0473988850911L208.0234375,385.2140655517578" class="path"/><defs><marker orient="auto" markerHeight="6" markerWidth="8" markerUnits="strokeWidth" refY="5" refX="9" viewBox="0 0 10 10" id="arrowhead23"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs></g><g style="opacity: 1;" id="L-C-F" class="edgePath LS-C LE-F"><path style="fill:none" marker-end="url(#arrowhead24)" d="M244.5608512512647,299.6766472228564L261.47388645938724,309.76621694434C278.3869216675098,319.85578666582353,312.2129920837549,340.03492610879067,329.12602729187745,354.2911624969409C346.0390625,368.5473988850911,346.0390625,376.8807322184245,346.0390625,381.0473988850911L346.0390625,385.2140655517578" class="path"/><defs><marker orient="auto" markerHeight="6" markerWidth="8" markerUnits="strokeWidth" refY="5" refX="9" viewBox="0 0 10 10" id="arrowhead24"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs></g></g><g class="edgeLabels"><g style="opacity: 1;" transform="translate(208.0234375,89)" class="edgeLabel"><g class="label" transform="translate(-24.0078125,-12)"><rect height="24" width="48.015625" ry="0" rx="0"/><foreignObject height="24" width="48.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span style="" class="edgeLabel L-LS-A' L-LE-B" id="L-L-A-B">Custom</span></div></foreignObject></g></g><g style="opacity: 1;" transform="" class="edgeLabel"><g class="label" transform="translate(0,0)"><rect height="0" width="0" ry="0" rx="0"/><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span style="" class="edgeLabel L-LS-B' L-LE-C" id="L-L-B-C"></span></div></foreignObject></g></g><g style="opacity: 1;" transform="" class="edgeLabel"><g class="label" transform="translate(0,0)"><rect height="0" width="0" ry="0" rx="0"/><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span style="" class="edgeLabel L-LS-C' L-LE-D" id="L-L-C-D"></span></div></foreignObject></g></g><g style="opacity: 1;" transform="" class="edgeLabel"><g class="label" transform="translate(0,0)"><rect height="0" width="0" ry="0" rx="0"/><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span style="" class="edgeLabel L-LS-C' L-LE-E" id="L-L-C-E"></span></div></foreignObject></g></g><g style="opacity: 1;" transform="" class="edgeLabel"><g class="label" transform="translate(0,0)"><rect height="0" width="0" ry="0" rx="0"/><foreignObject height="0" width="0"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml"><span style="" class="edgeLabel L-LS-C' L-LE-F" id="L-L-C-F"></span></div></foreignObject></g></g></g><g class="nodes"><g style="opacity: 1;" transform="translate(208.0234375,30)" id="flowchart-A-10" class="node default"><rect class="label-container" height="44" width="84.015625" y="-22" x="-42.0078125" ry="0" rx="0"/><g transform="translate(0,0)" class="label"><g transform="translate(-32.0078125,-12)"><foreignObject height="24" width="64.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">Profiles</div></foreignObject></g></g></g><g style="opacity: 1;" transform="translate(208.0234375,148)" id="flowchart-B-11" class="node default"><rect class="label-container" height="44" width="140.015625" y="-22" x="-70.0078125" ry="5" rx="5"/><g transform="translate(0,0)" class="label"><g transform="translate(-60.0078125,-12)"><foreignObject height="24" width="120.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">mkdir profiles/</div></foreignObject></g></g></g><g style="opacity: 1;" transform="translate(208.0234375,277.6070327758789)" id="flowchart-C-13" class="node default"><polygon class="label-container" transform="translate(-57.60703125,57.60703125)" points="57.60703125,0 115.2140625,-57.60703125 57.60703125,-115.2140625 0,-57.60703125"/><g transform="translate(0,0)" class="label"><g transform="translate(-32.0078125,-12)"><foreignObject height="24" width="64.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">Settings</div></foreignObject></g></g></g><g style="opacity: 1;" transform="translate(62.0078125,407.2140655517578)" id="flowchart-D-15" class="node default"><rect class="label-container" height="44" width="108.015625" y="-22" x="-54.0078125" ry="0" rx="0"/><g transform="translate(0,0)" class="label"><g transform="translate(-44.0078125,-12)"><foreignObject height="24" width="88.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">config.yaml</div></foreignObject></g></g></g><g style="opacity: 1;" transform="translate(208.0234375,407.2140655517578)" id="flowchart-E-17" class="node default"><rect class="label-container" height="44" width="84.015625" y="-22" x="-42.0078125" ry="0" rx="0"/><g transform="translate(0,0)" class="label"><g transform="translate(-32.0078125,-12)"><foreignObject height="24" width="64.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">env.file</div></foreignObject></g></g></g><g style="opacity: 1;" transform="translate(346.0390625,407.2140655517578)" id="flowchart-F-19" class="node default"><rect class="label-container" height="44" width="92.015625" y="-22" x="-46.0078125" ry="0" rx="0"/><g transform="translate(0,0)" class="label"><g transform="translate(-36.0078125,-12)"><foreignObject height="24" width="72.015625"><div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">flake.nix</div></foreignObject></g></g></g></g></g></g></svg></pre>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
             </nav>
 
         </div>
@@ -212,18 +159,13 @@ SSH_OPT2=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
     </body>
 </html>
