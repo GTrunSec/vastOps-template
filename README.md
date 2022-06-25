@@ -6,19 +6,22 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 # Required files
 
+- exmaple: `./profiles/test`
 
-| files            |                                     |
-|------------------|-------------------------------------|
-| config.toml      | hosts's information                 |
-| deploy-nodes.env | env variables for deploying process |
-|                  |                                     |
+| files            |                                            |
+|------------------|--------------------------------------------|
+| config.toml      | hosts's information                        |
+| deploy-nodes.env | env variables for deploying process        |
+| flake.lock       | No need modify, just for locking the files |
 
 
 ## Create your custom profile for deploying.
 
-1. `mkdir -p ./profiles/<name>`
+1. fork the `tempalte` repo and `mkdir -p ./profiles/<name>`
 
 2. cp the required files to your specific profile directory, and modify those files to your expectation.
+
+3. add thoes files to git staged
 
 ## Env variables
 
@@ -40,24 +43,24 @@ SSH_OPT2="-p 22 -o StrictHostKeyChecking=no"
 
 - example to `profiles/test` 
 ``` sh
-nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./profiles/test -- --env-file=./profiles/test/deploy-nodes.env -t env
+nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./profiles/test -- --env-file=./profiles/test/deploy-nodes.env -t env
 
 ```
 
 - user interface:
 
 ``` sh
-nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./<profiles-dir> -- --env-file=<profiles-dir>/<env-file> -t <task-name>
+nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./<profiles-dir> -- --env-file=<profiles-dir>/<env-file> -t <task-name>
 
 ```
 
 - display documentation for the current command/action
 
 <div align="center">
-  <img src="https://github.com/gtrunsec/vastOps-template/raw/main/attach/show-doc-command.png" width="350" />
+  <img src="https://github.com/gtrunsec/vastOps-template/raw/main/attach/show-doc-command.png" width="550" />
 </div>
 
 
 ``` sh
-nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./<profiles-dir> -- doc
+nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./<profiles-dir> -- doc
 ```
