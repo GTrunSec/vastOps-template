@@ -148,7 +148,6 @@
 <tr><td>deploy-nodes.env</td><td>env variables for deploying process</td></tr>
 <tr><td>flake.lock</td><td>No need modify, just for locking the files</td></tr>
 <tr><td>vast.yaml</td><td>You just need to add some necessary values and it will be updated/merged in the final template</td></tr>
-<tr><td></td><td></td></tr>
 </tbody></table>
 <h2 id="create-your-custom-profile-for-deploying"><a class="header" href="#create-your-custom-profile-for-deploying">Create your custom profile for deploying.</a></h2>
 <ol>
@@ -177,14 +176,16 @@ SSH_OPT2=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
 <ul>
 <li>example to <code>profiles/test</code> </li>
 </ul>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./profiles/test -- --env-file=./profiles/test/deploy-nodes.env -t env
-
+<pre><code class="language-sh">$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy 
+\ --override-input lock ./profiles/test \
+-- --env-file=./profiles/test/deploy-nodes.env -t env
 </code></pre>
 <ul>
 <li>user interface:</li>
 </ul>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./&lt;profiles-dir&gt; -- --env-file=&lt;profiles-dir&gt;/&lt;env-file&gt; -t &lt;task-name&gt;
-
+<pre><code class="language-bash">$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy
+\ --override-input lock ./&lt;profiles-dir&gt; \
+-- --env-file=&lt;profiles-dir&gt;/&lt;env-file&gt; -t &lt;task-name&gt;
 </code></pre>
 <ul>
 <li>display documentation for the current command/action</li>
@@ -192,7 +193,9 @@ SSH_OPT2=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
 <div align="center">
   <img src="https://github.com/gtrunsec/vastOps-template/raw/main/attach/show-doc-command.png" width="550" />
 </div>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./&lt;profiles-dir&gt; -- doc
+<pre><code class="language-sh">$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy 
+\--override-input lock ./&lt;profiles-dir&gt; \
+-- doc
 </code></pre>
 
                     </main>
