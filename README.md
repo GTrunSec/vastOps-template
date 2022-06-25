@@ -2,7 +2,7 @@
 
 This repo for Vast's users interface, see the [issue](https://github.com/GTrunSec/threatbus2nix/pull/16) get more information.
 
-    Only the operator host required nix, and make should you have enabled the ssh service on your deploy target host. The target host doesn't need to install any dependencies.
+>Only the operator host required nix, and make should you have enabled the ssh service on your deploy target host. The target host doesn't need to install any dependencies.
 
 # Required files
 
