@@ -8,11 +8,13 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 - exmaple: `./profiles/test`
 
-| files            |                                            |
-|------------------|--------------------------------------------|
-| config.toml      | hosts's information                        |
-| deploy-nodes.env | env variables for deploying process        |
-| flake.lock       | No need modify, just for locking the files |
+| files            |                                                                                                |
+|------------------|------------------------------------------------------------------------------------------------|
+| config.toml      | hosts's information                                                                            |
+| deploy-nodes.env | env variables for deploying process                                                            |
+| flake.lock       | No need modify, just for locking the files                                                     |
+| vast.yaml        | You just need to add some necessary values and it will be updated/merged in the final template |
+|                  
 
 
 ## Create your custom profile for deploying.
