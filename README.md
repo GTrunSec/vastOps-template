@@ -55,8 +55,6 @@ nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows
 
 <div align="center">
   <img src="https://github.com/gtrunsec/vastOps-template/raw/main/attach/show-doc-command.png" width="350" />
-  <h1>Standard</h1>
-  <p>Ship today.</span>
 </div>
 
 
