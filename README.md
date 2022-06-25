@@ -1,8 +1,8 @@
 # VastOps Templates
 
-This repo for Vast's users interface, see the [issue](https://github.com/GTrunSec/threatbus2nix/pull/16) get more information.
+This repo assists Vast's users in deploying infrastructure through the Ops method, see the [issue](https://github.com/GTrunSec/threatbus2nix/pull/16) get more information.
 
->Only the operator host required nix, and make should you have enabled the ssh service on your deploy target host. The target host doesn't need to install any dependencies.
+>Only the operator host required nix, and make sure you have enabled the ssh service on your deploy target host. The target host doesn't need to install any dependencies.
 
 # Required files
 
@@ -14,11 +14,11 @@ This repo for Vast's users interface, see the [issue](https://github.com/GTrunSe
 |                  |                                     |
 
 
-## Create your coustom profile for deploying.
+## Create your custom profile for deploying.
 
-- `mkdir -p ./profiles/<name>`
+1. `mkdir -p ./profiles/<name>`
 
-cp the required files to your specific profile directory, and modify those files to your expectation.
+2. cp the required files to your specific profile directory, and modify those files to your expectation.
 
 ## Env variables
 
@@ -36,5 +36,30 @@ SSH_OPT2="-p 22 -o StrictHostKeyChecking=no"
 ```
 
 
+# Command Actions
+
+- example to `profiles/test` 
+``` sh
+nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./profiles/test -- --env-file=./profiles/test/deploy-nodes.env -t env
+
+```
+
+- user interface:
+
+``` sh
+nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./<profiles-dir> -- --env-file=<profiles-dir>/<env-file> -t <task-name>
+
+```
+
+- display documentation for the current command/action
+
+<div align="center">
+  <img src="https://github.com/gtrunsec/vastOps-template/raw/main/attach/show-doc-command.png" width="350" />
+  <h1>Standard</h1>
+  <p>Ship today.</span>
+</div>
 
 
+``` sh
+nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy \--override-input lock ./<profiles-dir> -- doc
+```
