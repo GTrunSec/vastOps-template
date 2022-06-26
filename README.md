@@ -26,7 +26,7 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 4. write your own `justfile` commands, then run `just profiles-<>-all` 
 
-   - `nix develop` or `direnv`
+   - *Optional*: `nix develop` or `direnv`
      
      ```
      nix develop ./devshell
@@ -34,11 +34,11 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
      # example command
      just profiles test all
      ```
-   - run native command with:
-
-     ``` sh
-   $ nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user    ./profiles/test -- all
-    ```
+   - *Optional*: run native command with:
+   
+   ```sh
+   nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user    ./profiles/test -- all
+   ```
 
 ## Env variables
 
@@ -46,13 +46,14 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 ``` sh
 # can be  [ "vast-bin" "vast-release" "vast-latest"]
-VERSION=vast-bin
-
 HOST1=root@192.168.122.126
 SSH_OPT1="-p 22 -o StrictHostKeyChecking=no"
+DIR1="/opt/vast-env"
 
 HOST2=root@192.168.122.212
 SSH_OPT2="-p 22 -o StrictHostKeyChecking=no"
+# target directory
+DIR2="/usr/share/vast-env"
 ```
 
 
