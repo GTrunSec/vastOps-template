@@ -161,11 +161,26 @@
 <p>add those files to git staged</p>
 </li>
 <li>
-<p>write your own <code>justfile</code> commands, then run <code>just profiles-&lt;&gt;-all</code> or native command with</p>
+<p>write your own <code>justfile</code> commands, then run <code>just profiles-&lt;&gt;-all</code> </p>
+<ul>
+<li>
+<p><code>nix develop</code> or <code>direnv</code></p>
+<pre><code>nix develop ./devshell
+just profiles &lt;profile-name&gt; &lt;task&gt;
+# example command
+just profiles test all
+</code></pre>
+</li>
+<li>
+<p>run native command with:</p>
+<pre><code class="language-sh"></code></pre>
+</li>
+</ul>
+<p>$ nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy –override-input user    ./profiles/test – all</p>
+<pre><code>
+</code></pre>
 </li>
 </ol>
-<pre><code class="language-sh">nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user ./profiles/test -- all
-</code></pre>
 <h2 id="env-variables"><a class="header" href="#env-variables">Env variables</a></h2>
 <h3 id="deployment"><a class="header" href="#deployment">Deployment</a></h3>
 <pre><code class="language-sh"># can be  [ &quot;vast-bin&quot; &quot;vast-release&quot; &quot;vast-latest&quot;]
