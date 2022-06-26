@@ -1,6 +1,6 @@
 [info]
 # How many machines do you want to deploy?
-machines = 3
+machines = 2
 
 [vast]
 enable = true
