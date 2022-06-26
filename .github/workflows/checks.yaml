@@ -23,6 +23,12 @@ jobs:
           name: zeek
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
+      - name: Check Doc
+        run: nix -Lv develop github:GTrunSec/vast2nix#devShells.x86_64-linux.user --no-update-lock-file --no-write-lock-file --command just profiles-test 'doc'
+
+      - name: Check Bundle
+        run: nix -Lv develop github:GTrunSec/vast2nix#devShells.x86_64-linux.user --no-update-lock-file --no-write-lock-file --command just profiles-test '--env-file=./profiles/test/deploy.env -t bundle'
+
       - name: Build Doc
         run: nix -Lv develop github:GTrunSec/vast2nix#devShells.x86_64-linux.user --no-update-lock-file --no-write-lock-file --command mdbook build
 
