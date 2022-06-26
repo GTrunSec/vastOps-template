@@ -164,7 +164,7 @@
 <p>write your own <code>justfile</code> commands, then run <code>just profiles-&lt;&gt;-all</code> </p>
 <ul>
 <li>
-<p><code>nix develop</code> or <code>direnv</code></p>
+<p><em>Optional</em>: <code>nix develop</code> or <code>direnv</code></p>
 <pre><code>nix develop ./devshell
 just profiles &lt;profile-name&gt; &lt;task&gt;
 # example command
@@ -172,25 +172,24 @@ just profiles test all
 </code></pre>
 </li>
 <li>
-<p>run native command with:</p>
-<pre><code class="language-sh"></code></pre>
+<p><em>Optional</em>: run native command with:</p>
 </li>
 </ul>
-<p>$ nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy –override-input user    ./profiles/test – all</p>
-<pre><code>
+<pre><code class="language-sh">nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user    ./profiles/test -- all
 </code></pre>
 </li>
 </ol>
 <h2 id="env-variables"><a class="header" href="#env-variables">Env variables</a></h2>
 <h3 id="deployment"><a class="header" href="#deployment">Deployment</a></h3>
 <pre><code class="language-sh"># can be  [ &quot;vast-bin&quot; &quot;vast-release&quot; &quot;vast-latest&quot;]
-VERSION=vast-bin
-
 HOST1=root@192.168.122.126
 SSH_OPT1=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
+DIR1=&quot;/opt/vast-env&quot;
 
 HOST2=root@192.168.122.212
 SSH_OPT2=&quot;-p 22 -o StrictHostKeyChecking=no&quot;
+# target directory
+DIR2=&quot;/usr/share/vast-env&quot;
 </code></pre>
 <h1 id="command-actions"><a class="header" href="#command-actions">Command Actions</a></h1>
 <ul>
