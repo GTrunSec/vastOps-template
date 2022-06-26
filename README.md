@@ -22,7 +22,13 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 2. cp the required files to your specific profile directory, and modify those files to your expectation.
 
-3. add thoes files to git staged
+3. add those files to git staged
+
+4. write your own `justfile` commands, then run `just profiles-<>-all` or native command with
+
+``` sh
+nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user ./profiles/test -- all
+```
 
 ## Env variables
 

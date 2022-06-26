@@ -6,7 +6,7 @@ system := "#x86_64-linux"
 deploy := ".user.entrypoints.deploy --refresh --override-input lock"
 config := ".user.entrypoints.config --refresh --override-input lock"
 
-dev-bundle:
+dev-bundle arg:
      {{dev}}{{system}}{{deploy}} ./profiles/test -- --env-file=./profiles/test/deploy.env -t bundle
 
 dev-doc:
@@ -21,3 +21,9 @@ dev-lock:
 
 profiles-test-doc:
     {{url}}{{system}}{{deploy}} ./profiles/test -- doc
+
+profiles-test-all:
+    {{url}}{{system}}{{deploy}} ./profiles/test -- all
+
+profiles-test arg:
+    {{url}}{{system}}{{deploy}} ./profiles/test -- {{arg}}
