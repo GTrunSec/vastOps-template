@@ -24,11 +24,21 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 3. add those files to git staged
 
-4. write your own `justfile` commands, then run `just profiles-<>-all` or native command with
+4. write your own `justfile` commands, then run `just profiles-<>-all` 
 
-``` sh
-nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user ./profiles/test -- all
-```
+   - `nix develop` or `direnv`
+     
+     ```
+     nix develop ./devshell
+     just profiles <profile-name> <task>
+     # example command
+     just profiles test all
+     ```
+   - run native command with:
+
+     ``` sh
+   $ nix run -Lv github:gtrunsec:vast2nix#x86_64-linux.user.entrypoints.deploy --override-input user    ./profiles/test -- all
+    ```
 
 ## Env variables
 
