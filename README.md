@@ -44,15 +44,15 @@ SSH_OPT2="-p 22 -o StrictHostKeyChecking=no"
 
 - example to `profiles/test` 
 ``` sh
-$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy 
+$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.user.entrypoints.deploy 
 \ --override-input lock ./profiles/test \
--- --env-file=./profiles/test/deploy-nodes.env -t env
+-- --env-file=./profiles/test/deploy-nodes.env -t all
 ```
 
 - user interface:
 
 ``` bash
-$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.workflows.entrypoints.deploy
+$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.user.entrypoints.deploy
 \ --override-input lock ./<profiles-dir> \
 -- --env-file=<profiles-dir>/<env-file> -t <task-name>
 ``` 
