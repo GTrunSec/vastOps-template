@@ -4,8 +4,8 @@ dev := "nix run -Lv /home/gtrun/ghq/github.com/GTrunSec/vast2nix#"
 system := "x86_64-linux"
 deploy := ".workflows.entrypoints.deploy --refresh --override-input lock"
 
-profiles-test:
-     {{dev}}{{system}}{{deploy}} ./profiles/test -- --env-file=./profiles/test/deploy-nodes.env -t env
+dev-test:
+     {{dev}}{{system}}{{deploy}} ./profiles/test -- --env-file=./profiles/test/deploy.env -t bundle
 
 profiles-test-doc:
     {{url}}{{system}}{{deploy}} ./profiles/test -- doc
