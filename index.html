@@ -161,12 +161,12 @@
 <p>add those files to git staged</p>
 </li>
 <li>
-<p>write your own <code>justfile</code> commands, then run <code>just profiles-&lt;&gt;-all</code> </p>
+<p>write your own <code>justfile</code> commands, then run <code>just deploy &lt;profile-name&gt; &lt;task&gt;</code> </p>
 <ul>
 <li>
 <p><em>Optional</em>: <code>nix develop</code> or <code>direnv</code></p>
 <pre><code>nix develop ./devshell
-just profiles &lt;profile-name&gt; &lt;task&gt;
+just deploy &lt;profile-name&gt; &lt;task&gt;
 # example command
 just profiles test all
 </code></pre>
