@@ -30,11 +30,10 @@ jobs:
         run: nix develop ./devshell --print-build-logs --command just deploy test '--env-file=./profiles/test/deploy.env -t bundle'
 
       - name: Check Config Doc
-        run: nix develop ./devshell --print-build-logs --command just config doc '--env-file=./profiles/test/deploy.env'
+        run: nix develop ./devshell --print-build-logs --command just config test doc
 
       - name: Check Config Files
-        run: nix develop ./devshell --print-build-logs --command just config vast '--env-file=./profiles/test/deploy.env'
-
+        run: nix develop ./devshell --print-build-logs --command just config test vast
 
       - name: Check Vast CLI Doc
         run: nix develop ./devshell --print-build-logs --command cli-doc vast
