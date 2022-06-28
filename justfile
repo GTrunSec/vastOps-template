@@ -7,7 +7,6 @@ config := ".user.entrypoints.config --refresh --override-input lock"
 
 # just deploy test '--env-file=./profiles/test/deploy.env -t all'
 # just deploy <profile-name> '--env-file=./profiles/test/deploy.env -t all'
-
 deploy arg1 arg2:
     {{url}}{{system}}{{deploy}} ./profiles/{{arg1}} -- {{arg2}}
 

@@ -24,13 +24,13 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 3. add those files to git staged
 
-4. write your own `justfile` commands, then run `just profiles-<>-all` 
+4. write your own `justfile` commands, then run `just deploy <profile-name> <task>` 
 
    - *Optional*: `nix develop` or `direnv`
      
      ```
      nix develop ./devshell
-     just profiles <profile-name> <task>
+     just deploy <profile-name> <task>
      # example command
      just profiles test all
      ```
