@@ -141,7 +141,7 @@
 </blockquote>
 <h1 id="required-files"><a class="header" href="#required-files">Required files</a></h1>
 <ul>
-<li>exmaple: <code>./profiles/test</code></li>
+<li>exmaple: <code>./profiles/demo</code></li>
 </ul>
 <table><thead><tr><th>files</th><th></th></tr></thead><tbody>
 <tr><td>config.toml</td><td>hosts’s information</td></tr>
@@ -168,7 +168,7 @@
 <pre><code>nix develop ./devshell
 just deploy &lt;profile-name&gt; &lt;task&gt;
 # example command
-just profiles test all
+just profiles demo all
 </code></pre>
 </li>
 <li>
@@ -193,11 +193,11 @@ DIR2=&quot;/usr/share/vast-env&quot;
 </code></pre>
 <h1 id="command-actions"><a class="header" href="#command-actions">Command Actions</a></h1>
 <ul>
-<li>example to <code>profiles/test</code> </li>
+<li>example to <code>profiles/demo</code> </li>
 </ul>
 <pre><code class="language-sh">$ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.user.entrypoints.deploy 
-\ --override-input lock ./profiles/test \
--- --env-file=./profiles/test/deploy-nodes.env -t all
+\ --override-input lock ./profiles/demo \
+-- --env-file=./profiles/demo/deploy.env -t all
 </code></pre>
 <ul>
 <li>user interface:</li>
