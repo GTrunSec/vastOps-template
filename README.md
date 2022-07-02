@@ -6,7 +6,7 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
 
 # Required files
 
-- exmaple: `./profiles/test`
+- exmaple: `./profiles/demo`
 
 | files            |                                                                                                |
 |------------------|------------------------------------------------------------------------------------------------|
@@ -32,7 +32,7 @@ This repo assists Vast's users in deploying infrastructure through the Ops metho
      nix develop ./devshell
      just deploy <profile-name> <task>
      # example command
-     just profiles test all
+     just profiles demo all
      ```
    - *Optional*: run native command with:
    
@@ -59,11 +59,11 @@ DIR2="/usr/share/vast-env"
 
 # Command Actions
 
-- example to `profiles/test` 
+- example to `profiles/demo` 
 ``` sh
 $ nix run -Lv github:gtrunsec/vast2nix\#x86_64-linux.user.entrypoints.deploy 
-\ --override-input lock ./profiles/test \
--- --env-file=./profiles/test/deploy-nodes.env -t all
+\ --override-input lock ./profiles/demo \
+-- --env-file=./profiles/demo/deploy.env -t all
 ```
 
 - user interface:
