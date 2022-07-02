@@ -24,16 +24,16 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Check Doc
-        run: nix develop ./devshell --print-build-logs --command just deploy test doc
+        run: nix develop ./devshell --print-build-logs --command just deploy demo doc
 
       - name: Check Bundle
-        run: nix develop ./devshell --print-build-logs --command just deploy test '--env-file=./profiles/test/deploy.env -t bundle'
+        run: nix develop ./devshell --print-build-logs --command just deploy demo '--env-file=./profiles/demo/deploy.env -t bundle'
 
       - name: Check Config Doc
-        run: nix develop ./devshell --print-build-logs --command just config test doc
+        run: nix develop ./devshell --print-build-logs --command just config demo doc
 
       - name: Check Config Files
-        run: nix develop ./devshell --print-build-logs --command just config test vast
+        run: nix develop ./devshell --print-build-logs --command just config demo vast
 
       - name: Check Vast CLI Doc
         run: nix develop ./devshell --print-build-logs --command cli-doc vast
