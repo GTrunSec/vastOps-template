@@ -689,11 +689,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1657319567,
-        "narHash": "sha256-d3Ihf7/8i9jJSbsg16ZYeJ8wX9o3VwzjYP8IUQi4prU=",
+        "lastModified": 1657324012,
+        "narHash": "sha256-1V0UHWc+OjvpPl5HcYj+8/m8nnncPRbhaCRy3OnPWgw=",
         "owner": "gtrunsec",
         "repo": "vast2nix",
-        "rev": "b22951b2bc3b2b2b40ae9691966371d20a4b6dad",
+        "rev": "9840b1e0a33f822369e25b176b431c79fa396f91",
         "type": "github"
       },
       "original": {

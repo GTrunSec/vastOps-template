@@ -18,7 +18,7 @@ dev-deploy arg1 arg2:
     {{dev}}{{system}}{{deploy}} $PRJ_ROOT/profiles/{{arg1}} -- --env-file=$PRJ_ROOT/profiles/{{arg1}}/deploy.env -t {{arg2}}
 
 dev-config arg1 arg2:
-    {{dev}}{{system}}{{config}} $PRJ_ROOT/profiles/{{arg1}} -- --env-file=$PRJ_ROOT/profiles/{{arg1}}/deploy.env -t {{arg2}}
+    {{dev}}{{system}}{{config}} $PRJ_ROOT/profiles/{{arg1}} -- {{arg2}}
 
 # example:
 # lock-rev arg1 arg2:
