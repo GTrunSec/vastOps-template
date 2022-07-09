@@ -36,7 +36,7 @@ jobs:
         run: nix develop ./devshell --print-build-logs --command just config demo vast
 
       - name: Check Vast CLI Doc
-        run: nix develop ./devshell --print-build-logs --command cli-doc vast
+        run: nix develop ./devshell --print-build-logs --command vast-doc .
 
       - name: Build Doc
         run: nix develop github:GTrunSec/vast2nix#devShells.x86_64-linux.user --print-build-logs --no-update-lock-file --no-write-lock-file --command mdbook build
