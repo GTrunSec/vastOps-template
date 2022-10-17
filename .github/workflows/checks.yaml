@@ -42,7 +42,7 @@ jobs:
         run: nix develop github:GTrunSec/vast2nix#devShells.x86_64-linux.user --print-build-logs --no-update-lock-file --no-write-lock-file --command mdbook build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
           folder: ./docs/book
